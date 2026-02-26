@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="/calculate" th:method="post">
+        <fieldset>
+            <legend>Calculator</legend>
+            <br>
+            <div class="inpt_box">
+                <input class="inp" type="text" placeholder="Enter number" name="getInpData" th:value="${addInp}">
+                <br>
+            </div>
+            <br><br>
+
+            <div class="content">
+                <div class="val">1</div>
+                <div class="val">2</div>
+                <div class="val">3</div>
+                <button value="+" name="action">+</button>
+
+                <div class="val">4</div>
+                <div class="val">5</div>
+                <div class="val">6</div>
+                <button value="-" name="action">-</button>
+
+                <div class="val">00</div>
+                <div class="val">0</div>
+                <div class="val">.</div>
+                <button value="*" name="action">*</button>
+
+                <button value="=" name="action">=</button>
+                
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
