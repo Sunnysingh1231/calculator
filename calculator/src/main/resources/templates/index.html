@@ -5,13 +5,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form th:action="/calculate" th:method="post">
+
+    <form action="/calculate" method="post">
         <fieldset>
             <legend>Calculator</legend>
             <br>
             <div class="inpt_box">
                 <input class="inp" type="text" placeholder="Enter number" name="getInpData" th:value="${addInp}">
                 <br>
+                <input class="demo" type="text" readonly th:value="${demo}" name="demoData">
             </div>
             <br><br>
 
@@ -26,15 +28,25 @@
                 <div class="val">6</div>
                 <button value="-" name="action">-</button>
 
+                <div class="val">7</div>
+                <div class="val">8</div>
+                <div class="val">9</div>
+                <button value="/" name="action">/</button>
+
                 <div class="val">00</div>
                 <div class="val">0</div>
                 <div class="val">.</div>
                 <button value="*" name="action">*</button>
-
+                
+                <button value="c" name="action">C</button>
+                <button value="%" name="action">%</button>
                 <button value="=" name="action">=</button>
+                <div class="bb"> < </div>
                 
             </div>
         </fieldset>
+        <p>----- Calculate smarter, Not harder -----</p>
     </form>
+    
 </body>
 </html>
