@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+form{
+    width: 300px;
+    margin: 100px auto;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+	border-radius:10px;
+	padding:10px;
+    background-color: azure;
+}
+	
+legend{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(83, 83, 83);
+}
+.content{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4,1fr);
+}
+.content div{
+    background-color: rgb(226, 237, 248);
+    border-radius:5px;
+    text-align: center;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.inpt_box{
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+input{
+    width: 97%;
+}
+.inp{
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 0px 0px, rgba(0, 0, 0, 0.23) 1px 5px 6px;
+    border: 2px solid rgb(208, 208, 208);
+    margin-bottom: 6px;
+}
+
+.demo{
+    margin-top: 2px;
+    border: none;
+    outline: none;
+    cursor: default;
+    text-align: right;
+    background-color: azure;
+    color: rgb(231, 154, 0);
+}
+
+.val:hover{
+    background-color: rgb(134, 240, 240);
+}
+button{
+    border: 0px;
+    border-radius: 5px;
+    border: 1px solid rgb(194, 194, 194);
+}
+button:hover, .bb:hover{
+    background-color: bisque;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+p{
+    /* border: 2px solid red; */
+    text-align: center;
+    font-size: smaller;
+    color: rgb(171, 171, 171);
+}
+@media (max-width:200px) {
+    form{
+    width: 200px;
+    /* height: 100px; */
+}
+}
