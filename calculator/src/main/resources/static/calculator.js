@@ -1,10 +1,8 @@
 let inp = document.getElementsByClassName("inp")[0];
 let val = document.querySelectorAll(".val")
-
 let bb = document.getElementsByClassName("bb")[0];
 
 let flag = "n";
-
 
 function action() {
     
