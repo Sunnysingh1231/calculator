@@ -9,58 +9,66 @@ import org.springframework.web.bind.annotation.RequestParam;
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
-
-
 @Controller
 public class MainController {
 
-	String demo = "";			
+	// DEMO BOX CONTAINER
+	String demo = "";
 	
-
 	@GetMapping("/calculator")
 	public String test() {
-		return "index"; 
+		return "index";
 	}
 	
 	@PostMapping("/calculate")
 	public String receivedString(@RequestParam String action,String getInpData,String demoData, Model m1) {
 	
+		// IF USER PERFORM ANY OPERATION ( +, -, /, *, % )
 		if(action.equals("+")||action.equals("-")||action.equals("/")||action.equals("*")||action.equals("%")) {
 			
-			
+			// CHECK IF CONTAINER DOES NOT CONTAIN ANY VALUE.
 			if(getInpData.length() !=0) {
+
+				// REMOVE IF IT CONTAINS ANY OPERATION SYMBOL AT THE END
 				if(getInpData.charAt(getInpData.length()-1)=='+'||getInpData.charAt(getInpData.length()-1)=='-'||
 						getInpData.charAt(getInpData.length()-1)=='/'||getInpData.charAt(getInpData.length()-1)=='*') {
 					getInpData = getInpData.substring(0,getInpData.length()-1);
 				}
 				
+				// CALCULATE MULTIPLE OPERATION AT SINGLE TIME
 				Expression expression = new ExpressionBuilder(getInpData).build();
 				
+				// ADD  OPERATOR SYMBOL AT END TO SHOW IN INPUT BOX.
 				getInpData+=action;
 				
+				// SET VALUE TO THE INPUT BOX AND DEMO BOX
 				m1.addAttribute("addInp",getInpData);
-							
 				m1.addAttribute("demo",expression.evaluate());
 				
 			}
-			
-			
-			
-			
+
 		}
+		// USER PERFORM = OPERATION
 		if(action.equals("=")&&getInpData.length() !=0) {
+
+			// REMOVE IF IT CONTAINS ANY OPERATION SYMBOL AT THE END
 			if(getInpData.charAt(getInpData.length()-1)=='+'||getInpData.charAt(getInpData.length()-1)=='-'
 					||getInpData.charAt(getInpData.length()-1)=='/'||getInpData.charAt(getInpData.length()-1)=='*'
 					||getInpData.charAt(getInpData.length()-1)=='%'||getInpData.charAt(getInpData.length()-1)=='.') {
 				getInpData = getInpData.substring(0,getInpData.length()-1);
 			}
-			Expression expression = new ExpressionBuilder(getInpData).build();			
+
+			// CALCULATE MULTIPLE OPERATION AT SINGLE TIME
+			Expression expression = new ExpressionBuilder(getInpData).build();
+
+			// SET VALUE TO THE INPUT BOX
 			m1.addAttribute("addInp",expression.evaluate());
+
+			// CLEAR THE DEMO BOX
 			m1.addAttribute("demo","");
 		}
 		
 		   return "index";
-		
 		
 	}
 	
