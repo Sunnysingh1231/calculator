@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler;
 
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
@@ -36,14 +37,25 @@ public class MainController {
 				}
 				
 				// CALCULATE MULTIPLE OPERATION AT SINGLE TIME
-				Expression expression = new ExpressionBuilder(getInpData).build();
+				Expression expression = null;
+				try {
+					
+					expression = new ExpressionBuilder(getInpData).build();
+					double result = expression.evaluate();
+					
+					// ADD  OPERATOR SYMBOL AT END TO SHOW IN INPUT BOX.
+					getInpData+=action;
+					
+					// SET VALUE TO THE INPUT BOX AND DEMO BOX
+					m1.addAttribute("addInp",getInpData);
+					m1.addAttribute("demo",result);
+					
+				} catch (Exception e) {
+					m1.addAttribute("addInp",getInpData);
+					m1.addAttribute("demo","Error");
+				}
 				
-				// ADD  OPERATOR SYMBOL AT END TO SHOW IN INPUT BOX.
-				getInpData+=action;
 				
-				// SET VALUE TO THE INPUT BOX AND DEMO BOX
-				m1.addAttribute("addInp",getInpData);
-				m1.addAttribute("demo",expression.evaluate());
 				
 			}
 
@@ -59,17 +71,25 @@ public class MainController {
 			}
 
 			// CALCULATE MULTIPLE OPERATION AT SINGLE TIME
-			Expression expression = new ExpressionBuilder(getInpData).build();
+			try {
+				
+				Expression expression = new ExpressionBuilder(getInpData).build();
+				double result = expression.evaluate();
+				// SET VALUE TO THE INPUT BOX
+				m1.addAttribute("addInp",result);
 
-			// SET VALUE TO THE INPUT BOX
-			m1.addAttribute("addInp",expression.evaluate());
-
-			// CLEAR THE DEMO BOX
-			m1.addAttribute("demo","");
+				// CLEAR THE DEMO BOX
+				m1.addAttribute("demo","");
+				
+			} catch (Exception e) {
+				m1.addAttribute("addInp","Error");
+				m1.addAttribute("demo","");
+			}
 		}
 		
 		   return "index";
 		
 	}
+	
 	
 }
