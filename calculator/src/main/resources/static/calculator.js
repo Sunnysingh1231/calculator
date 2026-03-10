@@ -26,4 +26,8 @@ for (let i = 0; i < val.length; i++) {
 bb.addEventListener("click",()=>{
 	inp.value = inp.value.slice(0,-1)
 })
+function validateInput(){
+	inp.value = inp.value.replace(/[a-zA-Z!@#$^&()_={}|:;'"<>,`~]/, '');
+}
+
 

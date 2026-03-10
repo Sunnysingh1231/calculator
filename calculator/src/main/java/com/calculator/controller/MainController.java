@@ -82,12 +82,12 @@ public class MainController {
 				m1.addAttribute("demo","");
 				
 			} catch (Exception e) {
-				m1.addAttribute("addInp","Error");
-				m1.addAttribute("demo","");
+				m1.addAttribute("addInp",getInpData);
+				m1.addAttribute("demo","Error");
 			}
 		}
 		
-		   return "index";
+		return "index";
 		
 	}
 	
